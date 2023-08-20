@@ -4,16 +4,19 @@ This is an API for managing an E-Commerce platform, providing endpoints for user
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-  - [Environment Variables](#environment-variables)
-  - [Starting the Server](#starting-the-server)
-- [API Documentation](#api-documentation)
-- [Routes](#routes)
-- [Contributing](#contributing)
-- [License](#license)
+- [E-Commerce API](#e-commerce-api)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+  - [API Documentation](#api-documentation)
+  - [Routes](#routes)
+    - [Authentication Routes](#authentication-routes)
+    - [User Routes](#user-routes)
+    - [Product Routes](#product-routes)
+    - [Review Routes](#review-routes)
+    - [Order Routes](#order-routes)
+  - [Deployment](#deployment)
 
 ## Getting Started
 
@@ -31,8 +34,8 @@ Before you begin, ensure you have met the following requirements:
 1. Clone this repository:
 
    ```sh
-   git clone https://github.com/your-username/e-commerce-api.git
-   cd e-commerce-api
+   git clone https://github.com/RajnishKumar07/P9-E-Commerce-Api.git
+   cd P9-E-Commerce-Api
 
 2. Install dependencies:
 
@@ -193,6 +196,6 @@ You can find the API documentation by visiting the `/api-docs` route when the se
 
 ## Deployment
 
-You can access the live demo of this E-Commerce API on [Render](https://your-app-name.onrender.com).
+You can access the live demo of this E-Commerce API on [Render](https://e-commerce-api-yyqb.onrender.com).
 
 Feel free to explore the API's functionality and test its features.
