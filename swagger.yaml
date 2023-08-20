@@ -1,0 +1,929 @@
+openapi: 3.0.0
+info:
+  title: P9 E Commerce Api
+  contact: {}
+  version: '1.0.0'
+servers:
+- url: https://e-commerce-api-yyqb.onrender.com
+  variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register User
+      operationId: RegisterUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterUserRequest'
+              - example:
+                  name: string
+                  email: string
+                  password: string
+            example:
+              name: string
+              email: string
+              password: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-api-yyqb.onrender.com
+        variables: {}
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login User
+      operationId: LoginUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginUserRequest'
+              - example:
+                  email: string
+                  password: string
+            example:
+              email: string
+              password: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-api-yyqb.onrender.com
+        variables: {}
+  /auth/logout:
+    get:
+      tags:
+      - Auth
+      summary: Logout User
+      operationId: LogoutUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-api-yyqb.onrender.com
+        variables: {}
+  /auth/verify-email:
+    post:
+      tags:
+      - Auth
+      summary: Verify Email
+      operationId: VerifyEmail
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/VerifyEmailRequest'
+              - example:
+                  verificationToken: string
+                  email: string
+            example:
+              verificationToken: string
+              email: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-api-yyqb.onrender.com
+        variables: {}
+  /auth/reset-password:
+    post:
+      tags:
+      - Auth
+      summary: Reset Password
+      operationId: ResetPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ResetPasswordRequest'
+              - example:
+                  email: string
+                  token: string
+                  password: string
+            example:
+              email: string
+              token: string
+              password: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-api-yyqb.onrender.com
+        variables: {}
+  /auth/forget-password:
+    post:
+      tags:
+      - Auth
+      summary: Forget Password
+      operationId: ForgetPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ForgetPasswordRequest'
+              - example:
+                  email: string
+            example:
+              email: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-api-yyqb.onrender.com
+        variables: {}
+  /users:
+    get:
+      tags:
+      - User
+      summary: Get All Users
+      operationId: GetAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://e-commerce-api-yyqb.onrender.com
+        variables: {}
+  /users/{id}:
+    parameters:
+        - name: id
+          in: path
+          description: 'The user ID'
+          required: true
+          schema:
+            type: string
+    get:
+      tags:
+      - User
+      summary: Get Single User
+      operationId: GetSingleUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://e-commerce-api-yyqb.onrender.com
+        variables: {}
+  /users/showMe:
+    get:
+      tags:
+      - User
+      summary: Show Current User
+      operationId: ShowCurrentUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://e-commerce-api-yyqb.onrender.com
+        variables: {}
+  /users/updateUser:
+    post:
+      tags:
+      - User
+      summary: Update User
+      operationId: UpdateUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateUserRequest'
+              - example:
+                  email: string
+                  name: string
+            example:
+              email: string
+              name: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/updateUserPassword:
+    post:
+      tags:
+      - User
+      summary: Update User Password
+      operationId: UpdateUserPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateUserPasswordRequest'
+              - example:
+                  oldPassword: string
+                  newPassword: string
+            example:
+              oldPassword: string
+              newPassword: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /products:
+    get:
+      tags:
+      - Product
+      summary: Get All Products
+      operationId: GetAllProducts
+      parameters:
+      - name: sort
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/sort'
+          example:
+          - key: price
+            value: des
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema:
+                type: object
+      deprecated: false
+    post:
+      tags:
+      - Product
+      summary: Create Product
+      operationId: CreateProduct
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateProductRequest'
+              - {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /products/{id}:
+    parameters:
+        - name: id
+          in: path
+          description: 'product ID'
+          required: true
+          schema:
+            type: string
+    get:
+      tags:
+      - Product
+      summary: Get SIngle Product
+      operationId: GetSIngleProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+
+    post:
+      tags:
+      - Product
+      summary: Update Product
+      operationId: UpdateProduct
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateProductRequest'
+              - example:
+                  name: string
+            example:
+              name: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+
+    delete:
+      tags:
+      - Product
+      summary: Delete Product
+      operationId: DeleteProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /products/uploadImage:
+    post:
+      tags:
+      - Product
+      summary: Upload Image
+      operationId: UploadImage
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - image
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /products/{id}/reviews:
+    parameters:
+        - name: id
+          in: path
+          description: 'product ID'
+          required: true
+          schema:
+            type: string
+    get:
+      tags:
+      - Product
+      summary: Get SIngle Product Reviews
+      operationId: GetSIngleProductReviews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /reviews:
+    get:
+      tags:
+      - Reviews
+      summary: Get All Review
+      operationId: GetAllReview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema:
+                type: object
+      deprecated: false
+    post:
+      tags:
+      - Reviews
+      summary: Create Review
+      operationId: CreateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateReviewRequest'
+              - {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /reviews/{id}:
+    parameters:
+        - name: id
+          in: path
+          description: 'review ID'
+          required: true
+          schema:
+            type: string
+    get:
+      tags:
+      - Reviews
+      summary: Get Single Review
+      operationId: GetSingleReview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema:
+                type: object
+                example:
+                  product: string
+                  rating: number
+                  title: string
+                  comment: stringt
+              example:
+                product: string
+                rating: number
+                title: string
+                comment: stringt
+      deprecated: false
+
+    post:
+      tags:
+      - Reviews
+      summary: Update Review
+      operationId: UpdateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateReviewRequest'
+              - {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+
+    delete:
+      tags:
+      - Reviews
+      summary: Delete Review
+      operationId: DeleteReview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /orders:
+    get:
+      tags:
+      - Orders
+      summary: Get All Orders
+      operationId: GetAllOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema:
+                type: object
+      deprecated: false
+    post:
+      tags:
+      - Orders
+      summary: Create Order
+      operationId: CreateOrder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateOrderRequest'
+              - {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /orders/showAllMyOrders:
+    get:
+      tags:
+      - Orders
+      summary: Show All My Orders
+      operationId: ShowAllMyOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema:
+                type: object
+      deprecated: false
+  /orders/{id}:
+    parameters:
+        - name: id
+          in: path
+          description: 'order ID'
+          required: true
+          schema:
+            type: string
+    get:
+      tags:
+      - Orders
+      summary: Get Single Order
+      operationId: GetSingleOrder
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema:
+                type: object
+                example:
+                  tax: number
+                  shippingFee: number
+                  items:
+                  - name: string
+                    price: string
+                    image: string
+                    amount: number
+                    product: string
+              example:
+                tax: number
+                shippingFee: number
+                items:
+                - name: string
+                  price: string
+                  image: string
+                  amount: number
+                  product: string
+      deprecated: false
+    post:
+      tags:
+      - Orders
+      summary: Update Order
+      operationId: UpdateOrder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateOrderRequest'
+              - example:
+                  paymentIntentId: string
+            example:
+              paymentIntentId: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    RegisterUserRequest:
+      title: RegisterUserRequest
+      required:
+      - name
+      - email
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: Rajnish
+        email: rajnish+15@yopmail.com
+        password: test123
+    LoginUserRequest:
+      title: LoginUserRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: demouser@gmail.com
+        password: test123
+    VerifyEmailRequest:
+      title: VerifyEmailRequest
+      required:
+      - verificationToken
+      - email
+      type: object
+      properties:
+        verificationToken:
+          type: string
+        email:
+          type: string
+      example:
+        verificationToken: 7512dd32b3fbcf07f4b476ed5d3d4d117f913348650bc876de3481a9e5c17d0ab214197276aec14b
+        email: demouser5@gmail.com
+    ResetPasswordRequest:
+      title: ResetPasswordRequest
+      required:
+      - email
+      - token
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        token:
+          type: string
+        password:
+          type: string
+      example:
+        email: ''
+        token: ''
+        password: ''
+    ForgetPasswordRequest:
+      title: ForgetPasswordRequest
+      required:
+      - email
+      type: object
+      properties:
+        email:
+          type: string
+      example:
+        email: rajnish6633@gmail.com
+    UpdateUserRequest:
+      title: UpdateUserRequest
+      required:
+      - email
+      - name
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+      example:
+        email: rajnish6633@gmail.com
+        name: raaj rajnish
+    UpdateUserPasswordRequest:
+      title: UpdateUserPasswordRequest
+      required:
+      - oldPassword
+      - newPassword
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+      example:
+        oldPassword: test1234
+        newPassword: test123
+    sort:
+      title: sort
+      required:
+      - key
+      - value
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      example:
+        key: price
+        value: des
+    CreateProductRequest:
+      title: CreateProductRequest
+      required:
+      - name
+      - price
+      - description
+      - image
+      - category
+      - company
+      - colors
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        description:
+          type: string
+        image:
+          type: string
+        category:
+          type: string
+        company:
+          type: string
+        colors:
+          type: string
+      example:
+        name: Perfume
+        price: 300
+        description: Maecenas tristique, est et tempus semper, est quam pharetra magna
+        image: http://dummyimage.com/206x100.png/5fa2dd/ffffff
+        category: fashion
+        company: rodoster
+        colors: '#967d82'
+    UpdateProductRequest:
+      title: UpdateProductRequest
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+      example:
+        name: test update
+    CreateReviewRequest:
+      title: CreateReviewRequest
+      required:
+      - product
+      - rating
+      - title
+      - comment
+      type: object
+      properties:
+        product:
+          type: string
+        rating:
+          type: integer
+          format: int32
+        title:
+          type: string
+        comment:
+          type: string
+      example:
+        product: 6496a0145073c874cff6019b
+        rating: 4
+        title: good prdoduct
+        comment: average product
+    UpdateReviewRequest:
+      title: UpdateReviewRequest
+      required:
+      - rating
+      - title
+      - comment
+      type: object
+      properties:
+        rating:
+          type: integer
+          format: int32
+        title:
+          type: string
+        comment:
+          type: string
+      example:
+        rating: 4
+        title: bad prdoduct
+        comment: very very bad product
+    CreateOrderRequest:
+      title: CreateOrderRequest
+      required:
+      - tax
+      - shippingFee
+      - items
+      type: object
+      properties:
+        tax:
+          type: integer
+          format: int32
+        shippingFee:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+          description: ''
+      example:
+        tax: 499
+        shippingFee: 799
+        items:
+        - name: bed
+          price: '2699'
+          image: http://dummyimage.com/206x100.png/5fa2dd/ffffff
+          amount: 3
+          product: 6496a0145073c874cff6019b
+    Item:
+      title: Item
+      required:
+      - name
+      - price
+      - image
+      - amount
+      - product
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: string
+        image:
+          type: string
+        amount:
+          type: integer
+          format: int32
+        product:
+          type: string
+      example:
+        name: bed
+        price: '2699'
+        image: http://dummyimage.com/206x100.png/5fa2dd/ffffff
+        amount: 3
+        product: 6496a0145073c874cff6019b
+    UpdateOrderRequest:
+      title: UpdateOrderRequest
+      required:
+      - paymentIntentId
+      type: object
+      properties:
+        paymentIntentId:
+          type: string
+      example:
+        paymentIntentId: randomValue
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+- httpBearer: []
+tags:
+- name: Auth
+- name: User
+- name: Product
+- name: Reviews
+- name: Orders
