@@ -73,125 +73,66 @@ You can find the API documentation by visiting the `/api-docs` route when the se
 
 ### Authentication Routes
 
-- `/api/v1/auth/register`:
-  - **Method:** POST
-  - **Description:** Register a new user.
+# P9 E Commerce API
 
-- `/api/v1/auth/login`:
-  - **Method:** POST
-  - **Description:** Log in a user.
+This is the documentation for the P9 E Commerce API. Below you'll find details about the available endpoints, their methods, descriptions, and request body formats.
 
-- `/api/v1/auth/logout`:
-  - **Method:** GET
-  - **Description:** Log out the currently authenticated user.
+## Authentication (Auth)
 
-- `/api/v1/auth/verify-email`:
-  - **Method:** POST
-  - **Description:** Verify a user's email address.
+| Endpoint                | Method | Description                     | Request Body                                      |
+| ----------------------- | ------ | ------------------------------- | ------------------------------------------------- |
+| `/api/auth/signup`      | POST   | Create a new user               | { "email": "string", "password": "string" }       |
+| `/api/auth/login`       | POST   | Login with an existing user     | { "email": "string", "password": "string" }       |
+| `/api/auth/logout`      | GET    | Log out the currently authenticated user |                                               |
+| `/api/auth/verify-email`| POST   | Verify a user's email address   | { "verificationToken": "string", "email": "string" } |
+| `/api/auth/reset-password`| POST | Reset a user's password         | { "email": "string", "token": "string", "password": "string" } |
+| `/api/auth/forget-password`| POST | Send a password reset email to the user | { "email": "string" } |
 
-- `/api/v1/auth/reset-password`:
-  - **Method:** POST
-  - **Description:** Reset a user's password.
+## User
 
-- `/api/v1/auth/forget-password`:
-  - **Method:** POST
-  - **Description:** Send a password reset email to the user.
+| Endpoint                | Method | Description                     | Request Body                                      |
+| ----------------------- | ------ | ------------------------------- | ------------------------------------------------- |
+| `/api/users`            | GET    | Get all users (admin only)      |                                               |
+| `/api/users/{id}`       | GET    | Get a single user by ID (admin only) |                                           |
+| `/api/users/showMe`     | GET    | Get the current user's profile  |                                               |
+| `/api/users/updateUser` | POST   | Update the current user's profile | { "email": "string", "name": "string" }          |
+| `/api/users/updateUserPassword`| POST | Update the current user's password | { "oldPassword": "string", "newPassword": "string" } |
 
-### User Routes
+## Product
 
-- `/api/v1/users`:
-  - **Method:** GET
-  - **Description:** Get all users (admin only).
+| Endpoint                | Method | Description                     | Request Body                                      |
+| ----------------------- | ------ | ------------------------------- | ------------------------------------------------- |
+| `/api/products`         | GET    | Get all products                |                                               |
+| `/api/products`         | POST   | Create a new product (admin only) | { "name": "string", "price": "integer", "description": "string", "image": "string", "category": "string", "company": "string", "colors": "string" } |
+| `/api/products/uploadImage`| POST | Upload an image for a product (admin only) | Multipart Form-Data with `image` |
+| `/api/products/{id}`    | GET    | Get a single product by ID      |                                               |
+| `/api/products/{id}`    | POST   | Update a product by ID (admin only) | { "name": "string" }                             |
+| `/api/products/{id}`    | DELETE | Delete a product by ID (admin only) |                                               |
+| `/api/products/{id}/reviews`| GET | Get all reviews for a product |                                           |
 
-- `/api/v1/users/showMe`:
-  - **Method:** GET
-  - **Description:** Get the current user's profile.
+## Review
 
-- `/api/v1/users/updateUser`:
-  - **Method:** POST
-  - **Description:** Update the current user's profile.
+| Endpoint                | Method | Description                     | Request Body                                      |
+| ----------------------- | ------ | ------------------------------- | ------------------------------------------------- |
+| `/api/reviews`          | GET    | Get all reviews                 |                                               |
+| `/api/reviews`          | POST   | Create a new review             | { "product": "string", "rating": "integer", "title": "string", "comment": "string" } |
+| `/api/reviews/{id}`     | GET    | Get a single review by ID       |                                               |
+| `/api/reviews/{id}`     | POST   | Update a review by ID           | { "rating": "integer", "title": "string", "comment": "string" } |
+| `/api/reviews/{id}`     | DELETE | Delete a review by ID           |                                               |
 
-- `/api/v1/users/updateUserPassword`:
-  - **Method:** POST
-  - **Description:** Update the current user's password.
+## Orders
 
-- `/api/v1/users/:id`:
-  - **Method:** GET
-  - **Description:** Get a single user by ID (admin only).
+| Endpoint                | Method | Description                     | Request Body                                      |
+| ----------------------- | ------ | ------------------------------- | ------------------------------------------------- |
+| `/api/orders`           | GET    | Get all orders (admin only)     |                                               |
+| `/api/orders`           | POST   | Create a new order              | { "tax": "integer", "shippingFee": "integer", "items": [{ "name": "string", "price": "string", "image": "string", "amount": "integer", "product": "string" }] } |
+| `/api/orders/showAllMyOrders`| GET | Get all orders for the current user |                                      |
+| `/api/orders/{id}`      | GET    | Get a single order by ID        |                                               |
+| `/api/orders/{id}`      | POST   | Update an order by ID           | { "paymentIntentId": "string" }                  |
 
-### Product Routes
+## Security
 
-- `/api/v1/products`:
-  - **Method:** POST
-  - **Description:** Create a new product (admin only).
-
-- `/api/v1/products`:
-  - **Method:** GET
-  - **Description:** Get all products.
-
-- `/api/v1/products/uploadImage`:
-  - **Method:** POST
-  - **Description:** Upload an image for a product (admin only).
-
-- `/api/v1/products/:id`:
-  - **Method:** GET
-  - **Description:** Get a single product by ID.
-
-- `/api/v1/products/:id`:
-  - **Method:** POST
-  - **Description:** Update a product by ID (admin only).
-
-- `/api/v1/products/:id`:
-  - **Method:** DELETE
-  - **Description:** Delete a product by ID (admin only).
-
-- `/api/v1/products/:id/reviews`:
-  - **Method:** GET
-  - **Description:** Get all reviews for a product.
-
-### Review Routes
-
-- `/api/v1/reviews`:
-  - **Method:** GET
-  - **Description:** Get all reviews.
-
-- `/api/v1/reviews`:
-  - **Method:** POST
-  - **Description:** Create a new review.
-
-- `/api/v1/reviews/:id`:
-  - **Method:** GET
-  - **Description:** Get a single review by ID.
-
-- `/api/v1/reviews/:id`:
-  - **Method:** POST
-  - **Description:** Update a review by ID.
-
-- `/api/v1/reviews/:id`:
-  - **Method:** DELETE
-  - **Description:** Delete a review by ID.
-
-### Order Routes
-
-- `/api/v1/orders`:
-  - **Method:** GET
-  - **Description:** Get all orders (admin only).
-
-- `/api/v1/orders`:
-  - **Method:** POST
-  - **Description:** Create a new order.
-
-- `/api/v1/orders/showAllMyOrders`:
-  - **Method:** GET
-  - **Description:** Get all orders for the current user.
-
-- `/api/v1/orders/:id`:
-  - **Method:** GET
-  - **Description:** Get a single order by ID.
-
-- `/api/v1/orders/:id`:
-  - **Method:** POST
-  - **Description:** Update an order by ID.
+- The API uses Bearer Token for authentication.
 
 
 ## Deployment
