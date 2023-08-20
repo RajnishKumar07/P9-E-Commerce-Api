@@ -4,7 +4,7 @@ info:
   contact: {}
   version: '1.0.0'
 servers:
-- url: https://e-commerce-api-yyqb.onrender.com
+- url: https://e-commerce-api-yyqb.onrender.com/api/v1
   variables: {}
 paths:
   /auth/register:
@@ -37,7 +37,7 @@ paths:
       deprecated: false
       security: []
       servers:
-      - url: https://e-commerce-api-yyqb.onrender.com
+      - url: https://e-commerce-api-yyqb.onrender.com/api/v1
         variables: {}
   /auth/login:
     post:
@@ -67,7 +67,7 @@ paths:
       deprecated: false
       security: []
       servers:
-      - url: https://e-commerce-api-yyqb.onrender.com
+      - url: https://e-commerce-api-yyqb.onrender.com/api/v1
         variables: {}
   /auth/logout:
     get:
@@ -83,7 +83,7 @@ paths:
       deprecated: false
       security: []
       servers:
-      - url: https://e-commerce-api-yyqb.onrender.com
+      - url: https://e-commerce-api-yyqb.onrender.com/api/v1
         variables: {}
   /auth/verify-email:
     post:
@@ -113,7 +113,7 @@ paths:
       deprecated: false
       security: []
       servers:
-      - url: https://e-commerce-api-yyqb.onrender.com
+      - url: https://e-commerce-api-yyqb.onrender.com/api/v1
         variables: {}
   /auth/reset-password:
     post:
@@ -145,7 +145,7 @@ paths:
       deprecated: false
       security: []
       servers:
-      - url: https://e-commerce-api-yyqb.onrender.com
+      - url: https://e-commerce-api-yyqb.onrender.com/api/v1
         variables: {}
   /auth/forget-password:
     post:
@@ -173,7 +173,7 @@ paths:
       deprecated: false
       security: []
       servers:
-      - url: https://e-commerce-api-yyqb.onrender.com
+      - url: https://e-commerce-api-yyqb.onrender.com/api/v1
         variables: {}
   /users:
     get:
@@ -188,7 +188,7 @@ paths:
           headers: {}
       deprecated: false
       servers:
-      - url: https://e-commerce-api-yyqb.onrender.com
+      - url: https://e-commerce-api-yyqb.onrender.com/api/v1
         variables: {}
   /users/{id}:
     parameters:
@@ -210,7 +210,7 @@ paths:
           headers: {}
       deprecated: false
       servers:
-      - url: https://e-commerce-api-yyqb.onrender.com
+      - url: https://e-commerce-api-yyqb.onrender.com/api/v1
         variables: {}
   /users/showMe:
     get:
@@ -225,7 +225,7 @@ paths:
           headers: {}
       deprecated: false
       servers:
-      - url: https://e-commerce-api-yyqb.onrender.com
+      - url: https://e-commerce-api-yyqb.onrender.com/api/v1
         variables: {}
   /users/updateUser:
     post:
