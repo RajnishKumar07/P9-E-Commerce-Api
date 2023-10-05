@@ -40,11 +40,17 @@ app.use(
   rateLimiter({
     windowMs: 15 * 60 * 100,
     max: 60,
-  })
+  }),
 );
 
 app.use(helmet());
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "http://localhost:5000",
+
+  }),
+);
 app.use(xss());
 app.use(mongoSanitize());
 
@@ -57,7 +63,7 @@ app.use(express.static("./public"));
 app.use(fileUpload());
 
 app.get("/", (req, resp) => {
-  resp.send('<h1>E-Commerce API</h1><a href="/api-docs">Documentation</a>');
+  resp.send("<h1>E-Commerce API</h1><a href=\"/api-docs\">Documentation</a>");
 });
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 // routes
