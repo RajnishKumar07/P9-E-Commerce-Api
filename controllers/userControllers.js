@@ -57,7 +57,8 @@ const updateUserPassword = async (req, resp) => {
   }
   const { userId } = req.user;
   const user = await User.findOne({ _id: userId });
-  const isPasswordMatch = user.comparePassword(oldPassword);
+  const isPasswordMatch = await user.comparePassword(oldPassword);
+
   if (!isPasswordMatch) {
     throw new customError.UnauthenticatedError("Invalid credentails");
   }

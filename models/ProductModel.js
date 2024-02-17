@@ -1,22 +1,22 @@
-const mongoose = require( "mongoose" );
+const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       trim: true,
-      required: [ true, "Please provide Product Name" ],
-      maxlength: [ 100, "Name can not be more than 100 characters" ],
+      required: [true, "Please provide Product Name"],
+      maxlength: [100, "Name can not be more than 100 characters"],
     },
     price: {
       type: Number,
-      required: [ true, "Please provide Product Price" ],
+      required: [true, "Please provide Product Price"],
       default: 0,
     },
     description: {
       type: String,
-      required: [ true, "Please provide Product Description" ],
-      maxlength: [ 100, "Description can not be more than 100 characters" ],
+      required: [true, "Please provide Product Description"],
+      maxlength: [100, "Description can not be more than 100 characters"],
     },
     image: {
       type: String,
@@ -24,20 +24,20 @@ const ProductSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      required: [ true, "Please provide Product Category" ],
-      emum: [ "office", "kitchen", "bedroom" ],
+      required: [true, "Please provide Product Category"],
+      emum: ["office", "kitchen", "bedroom", "cloths"],
     },
     company: {
       type: String,
-      required: [ true, "Please provide Company" ],
+      required: [true, "Please provide Company"],
       enum: {
-        values: [ "ikea", "rodoster", "marcos" ],
+        values: ["ikea", "rodoster", "marcos", "EMPORIO ARMANI", "BLIVE"],
         message: "{VALUE} is not supported",
       },
     },
     colors: {
-      type: [ String ],
-      default: [ "#ffff" ],
+      type: [String],
+      default: ["#ffff"],
       required: true,
     },
     featured: {
@@ -67,28 +67,28 @@ const ProductSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } },
+  { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
-ProductSchema.virtual( "reviews", {
+ProductSchema.virtual("reviews", {
   ref: "Review",
   localField: "_id",
   foreignField: "product",
   justOne: false,
   // match: { rating: 5 },
-} );
+});
 
 /**
  * to delete all the review accociated with this product
  */
-ProductSchema.pre( "deleteOne", async function ( next ) {
-  const Review = mongoose.model( "Review" );
+ProductSchema.pre("deleteOne", async function (next) {
+  const Review = mongoose.model("Review");
   const projectId = this.getFilter()._id;
-  await Review.deleteMany( { product: projectId } );
+  await Review.deleteMany({ product: projectId });
   next();
-} );
+});
 
-module.exports = mongoose.model( "Product", ProductSchema );
+module.exports = mongoose.model("Product", ProductSchema);
 
 /**
  * @note about virtual
