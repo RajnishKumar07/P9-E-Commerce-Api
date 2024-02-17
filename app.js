@@ -43,8 +43,28 @@ app.use(
   })
 );
 
-app.use(helmet());
-app.use(cors());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      const whitelist = [
+        "http://localhost:5000",
+        "https://e-commerce-app-angular.web.app",
+      ];
+      if (whitelist.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    // methods: ["GET", "PUT", "POST"],
+    // allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
+    credentials: true,
+
+    // exposedHeaders: ["*", "Authorization"],
+  })
+);
 app.use(xss());
 app.use(mongoSanitize());
 
