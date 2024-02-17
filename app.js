@@ -43,8 +43,18 @@ app.use(
   })
 );
 
-app.use(helmet());
-app.use(cors());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+
+app.use(
+  cors({
+    origin: "http://localhost:5000",
+    // methods: ["GET", "PUT", "POST"],
+    // allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
+    credentials: true,
+
+    // exposedHeaders: ["*", "Authorization"],
+  })
+);
 app.use(xss());
 app.use(mongoSanitize());
 
