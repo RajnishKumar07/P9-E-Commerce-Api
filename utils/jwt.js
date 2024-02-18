@@ -39,7 +39,7 @@ const attachCookiesToResponse = ({ res, user }) => {
     secure: true,
     signed: true,
     SameSite: "None",
-    domain: "https://e-commerce-app-angular.web.app",
+    domain: "e-commerce-app-angular.web.app",
   };
   res.cookie("token", token, cookieConfig);
 };
