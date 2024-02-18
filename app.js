@@ -51,6 +51,7 @@ app.use(
       const whitelist = [
         "http://localhost:5000",
         "https://e-commerce-app-angular.web.app",
+        "https://e-commerce-app-angular.firebaseapp.com/",
       ];
       if (whitelist.indexOf(origin) !== -1 || !origin) {
         callback(null, true);
