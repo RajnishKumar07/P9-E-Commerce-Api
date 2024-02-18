@@ -40,6 +40,7 @@ const attachCookiesToResponse = ({ res, user }) => {
     signed: true,
     SameSite: "none",
     path: "/",
+    domain: "web.app",
   };
   res.cookie("token", token, cookieConfig);
 };
