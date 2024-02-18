@@ -36,11 +36,11 @@ const attachCookiesToResponse = ({ res, user }) => {
   cookieConfig = {
     httpOnly: true,
     expires: new Date(Date.now() + oneDay),
-    // secure: true,
+    secure: true,
     signed: true,
     SameSite: "none",
     path: "/",
-    // domain: "web.app",
+    domain: "firebaseapp.com",
   };
   res.cookie("token", token, cookieConfig);
 };
