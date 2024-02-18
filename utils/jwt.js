@@ -38,8 +38,8 @@ const attachCookiesToResponse = ({ res, user }) => {
     expires: new Date(Date.now() + oneDay),
     secure: true,
     signed: true,
-    SameSite: "None",
-    domain: "e-commerce-app-angular.web.app",
+    SameSite: "none",
+    path: "/",
   };
   res.cookie("token", token, cookieConfig);
 };
