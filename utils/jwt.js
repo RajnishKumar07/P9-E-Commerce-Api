@@ -47,7 +47,8 @@ const attachCookiesToResponse = ({ res, user }) => {
     expires: new Date(Date.now() + oneDay),
     secure: true,
     signed: true,
-    SameSite: "None",
+    sameSite: "None",
+    domain: "web",
   };
   res.cookie("token", token, cookieConfig);
 };
