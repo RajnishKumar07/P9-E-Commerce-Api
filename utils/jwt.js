@@ -33,22 +33,14 @@ const attachCookiesToResponse = ({ res, user }) => {
   //     signed: true,
   //   };
   // }
-  // cookieConfig = {
-  //   httpOnly: true,
-  //   expires: new Date(Date.now() + oneDay),
-  //   secure: true,
-  //   signed: true,
-  //   SameSite: "none",
-  //   path: "/",
-  //   domain: "firebaseapp.com",
-  // };
+
   cookieConfig = {
     httpOnly: true,
     expires: new Date(Date.now() + oneDay),
-    secure: true,
     signed: true,
+    secure: true,
     sameSite: "None",
-    domain: "web",
+    domain: ".onrender.com",
   };
   res.cookie("token", token, cookieConfig);
 };
