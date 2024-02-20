@@ -40,7 +40,7 @@ const attachCookiesToResponse = ({ res, user }) => {
     signed: true,
     secure: true,
     sameSite: "None",
-    domain: ".web.app",
+    domain: ".onrender.com",
   };
   res.cookie("token", token, cookieConfig);
 };
