@@ -40,12 +40,14 @@ const register = async (req, resp) => {
    *
    * if you are using postman then this all will be null
    */
-  const forwardedProtocol = req.get("x-forwarded-proto");
-  const forwardedHost = req.get("x-forwarded-host");
-  const origin =
-    forwardedProtocol && forwardedHost
-      ? `${forwardedProtocol}://${forwardedHost}`
-      : "http:localhost:5000";
+  // const forwardedProtocol = req.get("x-forwarded-proto");
+  // const forwardedHost = req.get("x-forwarded-host");
+  // const origin =
+  //   forwardedProtocol && forwardedHost
+  //     ? `${forwardedProtocol}://${forwardedHost}`
+  //     : "http:localhost:5000";
+
+  const origin = req.get("origin");
 
   await sendVerificationEmail({
     name: user.name,
@@ -129,12 +131,14 @@ const forgetPassword = async (req, resp) => {
 
   if (user) {
     const passwordToken = crypto.randomBytes(70).toString("hex");
-    const forwardedProtocol = req.get("x-forwarded-proto");
-    const forwardedHost = req.get("x-forwarded-host");
-    const origin =
-      forwardedProtocol && forwardedHost
-        ? `${forwardedProtocol}://${forwardedHost}`
-        : "http:localhost:5000";
+    // const forwardedProtocol = req.get("x-forwarded-proto");
+    // const forwardedHost = req.get("x-forwarded-host");
+    // const origin =
+    //   forwardedProtocol && forwardedHost
+    //     ? `${forwardedProtocol}://${forwardedHost}`
+    //     : "http:localhost:5000";
+
+    const origin = req.get("origin");
     await sendResetPasswordEmail({
       email: user.email,
       name: user.name,

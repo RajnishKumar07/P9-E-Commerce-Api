@@ -124,6 +124,7 @@ const uploadImage = async (req, resp) => {
   );
 
   await productImage.mv(imagePath);
+
   const requestedUrl = `${req.protocol}://${req.get("host")}`;
   resp.status(StatusCodes.OK).json({
     image: `${requestedUrl}/uploads/${productImage.name}`,
